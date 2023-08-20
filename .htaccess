@@ -1,4 +1,5 @@
 RewriteEngine On
 RewriteBase /
-RewriteCond %{REQUEST_URI} !\.(js|css|ico|jpg|png)$
+
+RewriteCond %{REQUEST_URI} !((\.(js|css|ico|jpg|png)$)|process\.php$)
 RewriteRule .+ index.php

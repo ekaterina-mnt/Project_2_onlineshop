@@ -1,5 +1,5 @@
 <p>
-<form action="/register_process" method="POST">
+<form action="/register_process.php" method="POST">
     <input name="name" placeholder="Имя">
     <input name="email" placeholder="E-mail">
     <input name="password" type="password" placeholder="Придумайте пароль">

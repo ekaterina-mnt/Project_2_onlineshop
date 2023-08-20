@@ -15,7 +15,12 @@
     </header>
     <main>
         <?php
-        $path = 'views' . $_SERVER['REQUEST_URI'] . '.php';
+        if ($_SERVER['REQUEST_URI'] == '/') {
+            $path = 'views/main.php';
+        } else {
+            $path = 'views' . $_SERVER['REQUEST_URI'] . '.php';
+        }
+        
         if (file_exists($path)) {
             $content = file_get_contents($path);
             echo $content;
