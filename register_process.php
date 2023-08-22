@@ -7,7 +7,6 @@ $password_confirm = $_POST['password_confirm'];
 $confirm = boolval($password === $password_confirm);
 
 $link = mysqli_connect('localhost', 'root', '', 'onlineshop');
-var_dump(mysqli_query($link, "SELECT * FROM users WHERE login='$login'")->num_rows);
 
 if (
     empty($name) or empty($login) or

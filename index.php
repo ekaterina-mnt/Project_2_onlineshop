@@ -13,15 +13,12 @@
         error_reporting(E_ALL); #включение вывода нотисов и варнингсов
         ini_set('display_errors', 'on');
         
-        session_start();
         include 'views/header.php';
 
         if (isset($_SESSION['flash'])) {
             $flash = $_SESSION['flash'];
             echo "<p>$flash</p>";
         }
-        session_destroy();
-        
         
         ?>
     </header>
