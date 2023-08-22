@@ -11,16 +11,7 @@
                             } ?></a>
     <a href="<?php
                 if (!empty($_SESSION['auth'])) { ?>
-            /logout">Выйти</a><?php } else { ?>
+            /logout_process.php">Выйти</a><?php } else { ?>
     /register">Регистрация<?php
                             } ?></a>
-    <div>
-        <?php
-        if (isset($_SESSION['auth'])) {
-            echo $_SESSION['auth'];
-        } else {
-            echo 'not auth';
-        }
-        ?>
-    </div>
 </nav>

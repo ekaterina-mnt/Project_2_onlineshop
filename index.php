@@ -18,6 +18,7 @@
         if (isset($_SESSION['flash'])) {
             $flash = $_SESSION['flash'];
             echo "<p>$flash</p>";
+            unset($_SESSION['flash']);
         }
         
         ?>
