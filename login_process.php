@@ -17,6 +17,7 @@ if (empty($login) or empty($password)) {
         session_start();
         $_SESSION['flash'] = 'Вы успешно вошли в аккаунт!';
         $_SESSION['auth'] = TRUE;
+        $_SESSION['user_id'] = $user['id'];
         header("Location: /");
     } else {
         session_start();

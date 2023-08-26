@@ -34,6 +34,7 @@ if (
     if (mysqli_query($link, "SELECT * FROM users WHERE name='$name' AND login='$login' AND password='$password'")) {
         session_start();
         $_SESSION['flash'] = 'Аккаунт успешно зарегистрирован!';
+        $_SESSION['user_id'] = $user['id'];
         $_SESSION['auth'] = TRUE;
         header('Location: /');
     } else {
