@@ -10,7 +10,8 @@ if ($_POST) {
         if (!empty($order)) {
 
             $order_id = mysqli_fetch_assoc($order)['id'];
-            mysqli_query($link, "UPDATE orders SET status='paid' WHERE id=$order_id");
+            $date = date("y-m-d m:i:s", time());
+            mysqli_query($link, "UPDATE orders SET status='paid', timestamps='$date' WHERE id=$order_id");
         } else {
             $_SESSION['flash'] = 'Товар не найден в корзине!';
             header('Location: /cart');
