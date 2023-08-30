@@ -1,3 +1,4 @@
+<h2>Авторизация</h2>
 <p>
 <form action="\login_process.php" method="POST">
     <input name="login" type="text" placeholder="Логин">

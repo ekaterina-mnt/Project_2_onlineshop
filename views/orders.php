@@ -1,3 +1,5 @@
+<h2>Мои заказы</h2>
+
 <?php
 $link = mysqli_connect('localhost', 'root', '', 'onlineshop');
 if ($_SESSION['auth']) {

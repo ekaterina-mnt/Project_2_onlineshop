@@ -71,3 +71,7 @@ button[type='submit'] {
 button[type='submit']:hover {
     font-weight: bold;
 }
+
+h2 {
+    margin-bottom: 15px;
+}

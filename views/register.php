@@ -1,3 +1,4 @@
+<h2>Регистрация</h2>
 <p>
 <form action="/register_process.php" method="POST">
     <input name="name" type="text" placeholder="Имя" value="<?php if (isset($_SESSION['post'])) {

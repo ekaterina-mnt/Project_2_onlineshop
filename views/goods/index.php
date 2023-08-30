@@ -1,3 +1,5 @@
+<h2>Каталог товаров</h2>
+
 <?php
 $link = mysqli_connect('localhost', 'root', '', 'onlineshop');
 $goods = mysqli_query($link, "SELECT * FROM goods") or die(mysqli_error($link));
@@ -12,7 +14,6 @@ if (isset($_SESSION['auth'])) {
     foreach ($in_cart as $i) {
         $cart_goods[] = $i['good_id'];
     }
-
 
     echo '<table>';
     foreach ($goods as $good) { ?>

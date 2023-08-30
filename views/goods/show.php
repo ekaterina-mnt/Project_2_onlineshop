@@ -1,24 +1,23 @@
 <?php
 $link = mysqli_connect('localhost', 'root', '', 'onlineshop');
-$goods = mysqli_query($link, "SELECT * FROM goods WHERE id=$good_id") or die(mysqli_error($link));
+$good = mysqli_query($link, "SELECT * FROM goods WHERE id=$good_id") or die(mysqli_error($link));
 
-if ($goods->num_rows != 0) {
-    echo '<table>';
-    foreach ($goods as $good) { ?>
+if ($good->num_rows) {
+    $good = mysqli_fetch_assoc($good);
+    echo "<h2>" . $good['name'] . "</h2>";
+?>
+    <table>
         <tr>
             <td>
                 <div class="show-good-wrapper">
-                    <?= $good['name'] ?><br>
                     <?= $good['price'] ?><br>
                     <?= $good['description'] ?>
-
                 </div>
             </td>
             <td>
                 <img class="show-good" src="/goods_img/<?= $good['img_src'] ?>">
             </td>
         </tr>
-    <?php    } ?>
     </table>
 
     <form action="<?php if (isset($_SESSION['auth'])) { ?>
