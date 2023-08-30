@@ -3,13 +3,34 @@ $link = mysqli_connect('localhost', 'root', '', 'onlineshop');
 $goods = mysqli_query($link, "SELECT * FROM goods WHERE id=$good_id") or die(mysqli_error($link));
 
 if ($goods->num_rows != 0) {
-    foreach ($goods as $good) {
-        echo '<a href="/goods/' . "$good[id]" . '">' .
-            "<p>$good[name]<br>
-            $good[price]<br>
-            $good[description]</p>" . '</a>';
-    }
+    echo '<table>';
+    foreach ($goods as $good) { ?>
+        <tr>
+            <td>
+                <div class="show-good-wrapper">
+                    <?= $good['name'] ?><br>
+                    <?= $good['price'] ?><br>
+                    <?= $good['description'] ?>
+
+                </div>
+            </td>
+            <td>
+                <img class="show-good" src="/goods_img/<?= $good['img_src'] ?>">
+            </td>
+        </tr>
+    <?php    } ?>
+    </table>
+
+    <a href="<?php if (isset($_SESSION['auth'])) { ?>
+        /add_to_cart/<?= $good['id'] ?>
+        <?php } else { ?>
+            /login
+            <?php }
+                $_SESSION['flash'] = 'Необходимо авторизоваться';
+            ?>">
+        Добавить в корзину
+    </a>
+<?php
 } else {
     echo "<p>К сожалению, данный товар не найден.</p>";
 }
-?>
