@@ -4,13 +4,11 @@ session_start();
 
 if ($_POST) {
 
-    foreach ($_POST as $good_id => $i) {
-        $order = mysqli_query($link, "SELECT * FROM orders WHERE id=$good_id and status='in_cart'");
+    foreach ($_POST as $order_id => $i) {
+        $order = mysqli_query($link, "SELECT * FROM orders WHERE id=$order_id and status='in_cart'");
 
         if (!empty($order)) {
-
-            $order_id = mysqli_fetch_assoc($order)['id'];
-            $date = date("y-m-d m:i:s", time());
+            $date = date("y-m-d H:i:s", time());
             mysqli_query($link, "UPDATE orders SET status='paid', timestamps='$date' WHERE id=$order_id");
         } else {
             $_SESSION['flash'] = 'Товар не найден в корзине!';
