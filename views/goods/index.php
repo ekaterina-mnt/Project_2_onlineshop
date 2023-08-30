@@ -1,15 +1,19 @@
 <?php
 $link = mysqli_connect('localhost', 'root', '', 'onlineshop');
 $goods = mysqli_query($link, "SELECT * FROM goods") or die(mysqli_error($link));
-$user_id = $_SESSION['user_id'];
-$in_cart = mysqli_query($link, "SELECT good_id FROM orders WHERE user_id=$user_id and status='in_cart'");
-
-$cart_goods = [];
-foreach ($in_cart as $i) {
-    $cart_goods[] = $i['good_id'];
-}
 
 if (isset($_SESSION['auth'])) {
+
+    //определить какие товары в уже в корзине
+    $user_id = $_SESSION['user_id'];
+    $in_cart = mysqli_query($link, "SELECT good_id FROM orders WHERE user_id=$user_id and status='in_cart'");
+
+    $cart_goods = [];
+    foreach ($in_cart as $i) {
+        $cart_goods[] = $i['good_id'];
+    }
+
+
     echo '<table>';
     foreach ($goods as $good) { ?>
         <tr>
@@ -39,7 +43,6 @@ if (isset($_SESSION['auth'])) {
     </table>
     <?php
 } else {
-    echo "Добавлять товары в корзину могут только зарегистрированнные пользователи";
     echo '<table>';
     foreach ($goods as $good) { ?>
         <tr>
