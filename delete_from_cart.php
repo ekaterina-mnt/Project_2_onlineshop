@@ -9,9 +9,9 @@ if (!empty($order)) {
         unset($_SESSION['cart_redirect']);
         header('Location: /cart');
     } else {
-        header('Location: /goods/index');
+        header('Location: /goods');
     }
 } else {
     $_SESSION['flash'] = 'Товар не найден в корзине!';
-    header('Location: /goods/index');
+    header('Location: /goods');
 }
