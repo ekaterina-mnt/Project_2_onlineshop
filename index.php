@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/app.css">
     <title>Главная</title>
 </head>
 
@@ -14,15 +15,19 @@
         ini_set('display_errors', 'on');
 
         include 'views/header.php';
+        ?>
+    </header>
 
+    <div class="flash">
+        <?php
         if (isset($_SESSION['flash'])) {
             $flash = $_SESSION['flash'];
             echo "<p>$flash</p>";
             unset($_SESSION['flash']);
         }
-
         ?>
-    </header>
+    </div>
+
     <main>
         <?php
         if ($_SERVER['REQUEST_URI'] == '/') {
