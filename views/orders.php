@@ -2,34 +2,25 @@
 $link = mysqli_connect('localhost', 'root', '', 'onlineshop');
 if ($_SESSION['auth']) {
     $user_id = $_SESSION['user_id'];
-    $orders = mysqli_query($link, "SELECT good_id, timestamps FROM orders WHERE user_id=$user_id and status='paid'");
+    $paid = mysqli_query($link, "SELECT orders.timestamps, goods.name, goods.price, orders.good_id FROM orders LEFT JOIN goods ON orders.good_id=goods.id WHERE user_id=$user_id and status='paid'");
 
-    if ($orders->num_rows) {
-        $goods = [];
-
-        foreach ($orders as $order) {
-            $good_id = $order['good_id'];
-            $good = mysqli_query($link, "SELECT * FROM goods WHERE id=$good_id") or die(mysqli_error($link));
-            $goods[$order['timestamps']] = $good;
-        }
-
+    if ($paid->num_rows) {
+        $orders = [];
 ?>
         <table>
             <?php
-            foreach ($goods as $timestamps => $good) {
-                $good = mysqli_fetch_assoc($good); ?>
+            foreach ($paid as $order) { ?>
                 <tr>
                     <td>
-                        <a href="/goods/<?= $good['id'] ?>">
-                            <p><?= $good['name'] ?><br>
-                                <?= $good['price'] ?><br>
-                                <?= $good['description'] ?>
+                        <a href="/goods/<?= $order['good_id'] ?>">
+                            <p><?= $order['name'] ?><br>
+                                <?= $order['price'] ?><br>
                             </p>
                         </a>
                     </td>
                     <td>
                         <p>
-                            <?= $timestamps ?>
+                            <?= $order['timestamps'] ?>
                         </p>
                     </td>
                 </tr>
