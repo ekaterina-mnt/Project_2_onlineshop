@@ -27,13 +27,13 @@ if (isset($_SESSION['auth'])) {
             </td>
             <?php if (in_array($good['id'], $cart_goods)) { ?>
                 <td>
-                    <a href="/delete_from_cart/<?= $good['id'] ?>">
+                    <a class="blue" href="/delete_from_cart/<?= $good['id'] ?>">
                         Удалить из корзины
                     </a>
                 </td>
             <?php } else { ?>
                 <td>
-                    <a href="/add_to_cart/<?= $good['id'] ?>">
+                    <a class="blue" href="/add_to_cart/<?= $good['id'] ?>">
                         Добавить в корзину
                     </a>
                 </td>

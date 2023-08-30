@@ -21,7 +21,7 @@ nav {
     justify-content: space-around;
 }
 
-nav>a:hover {
+nav>a:hover, a.blue:hover {
     color: blue;
 }
 
@@ -54,4 +54,20 @@ td {
 
 img.show-good {
     width: 150px;
+}
+
+input[type='text'], input[type='password'] {
+    line-height: 20px;
+    margin: 10px;
+}
+
+button[type='submit'] {
+    color: white;
+    background-color: blue;
+    border: none;
+    padding: 5px 10px;
+}
+
+button[type='submit']:hover {
+    font-weight: bold;
 }

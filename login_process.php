@@ -6,7 +6,6 @@ $password = $_POST['password'];
 if (empty($login) or empty($password)) {
     session_start();
     $_SESSION['flash'] = 'Введены не все данные';
-    $_SESSION['post'] = $_POST;
     header('Location: /login');
 } else {
     $link = mysqli_connect('localhost', 'root', '', 'onlineshop');

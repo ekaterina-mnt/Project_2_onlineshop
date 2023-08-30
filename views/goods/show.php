@@ -21,15 +21,17 @@ if ($goods->num_rows != 0) {
     <?php    } ?>
     </table>
 
-    <a href="<?php if (isset($_SESSION['auth'])) { ?>
+    <form action="<?php if (isset($_SESSION['auth'])) { ?>
         /add_to_cart/<?= $good['id'] ?>
         <?php } else { ?>
             /login
-            <?php }
-                $_SESSION['flash'] = 'Необходимо авторизоваться';
+            <?php
+                    }
             ?>">
-        Добавить в корзину
-    </a>
+        <button type="submit">
+            Добавить в корзину
+        </button>
+    </form>
 <?php
 } else {
     echo "<p>К сожалению, данный товар не найден.</p>";

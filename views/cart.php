@@ -23,7 +23,7 @@ if ($_SESSION['auth']) {
                             </a>
                         </td>
                         <td>
-                            <a href="/delete_from_cart/<?= $order['good_id'] ?>">
+                            <a class="blue" href="/delete_from_cart/<?= $order['good_id'] ?>">
                                 Удалить из корзины
                                 <?php $_SESSION['cart_redirect'] = TRUE; ?>
                             </a>
@@ -31,7 +31,9 @@ if ($_SESSION['auth']) {
                     </tr>
                 <?php } ?>
             </table>
-            <input type="submit" value="Оплатить">
+            <button type="submit">
+                Оплатить
+            </button>
         </form>
 <?php
     } else {
