@@ -30,8 +30,11 @@ if (
     $password = password_hash($password, PASSWORD_DEFAULT);
 
     mysqli_query($link, "INSERT INTO users (name, login, password) VALUES ('$name', '$login', '$password')");
+    
+    $user = mysqli_query($link, "SELECT * FROM users WHERE name='$name' AND login='$login' AND password='$password'");
 
-    if (mysqli_query($link, "SELECT * FROM users WHERE name='$name' AND login='$login' AND password='$password'")) {
+    if ($user) {
+        $user = mysqli_fetch_assoc($user);
         session_start();
         $_SESSION['flash'] = 'Аккаунт успешно зарегистрирован!';
         $_SESSION['user_id'] = $user['id'];

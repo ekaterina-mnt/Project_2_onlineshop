@@ -20,16 +20,16 @@ if ($good->num_rows) {
         </tr>
     </table>
 
-    <form action="<?php if (isset($_SESSION['auth'])) { ?>
-        /add_to_cart/<?= $good['id'] ?>
-        <?php } else { ?>
-            /login
-            <?php
+    <form action=<?php if (isset($_SESSION['auth'])) { ?> "/add_to_cart/<?= $good['id'] ?>">
+    <?php } else { ?>
+        "/login">
+    <?php
+                        $_SESSION['flash'] = 'Необходимо авторизоваться.';
                     }
-            ?>">
-        <button type="submit">
-            Добавить в корзину
-        </button>
+    ?>
+    <button type="submit">
+        Добавить в корзину
+    </button>
     </form>
 <?php
 } else {
